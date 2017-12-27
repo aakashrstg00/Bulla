@@ -1,0 +1,68 @@
+<% include ./partials-i/header %>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-4 hidden-xs-down">
+                <div class="card">
+                    <div class="card-block">
+                        <strong style="font-size: 1.7rem;">
+                            <%=details.Name%>
+                        </strong>
+                        <br>
+                        <%=details.Username%>
+
+                            <hr>
+                            <button class="btn btn-sm btn-secondary" type="button" data-toggle="modal" data-target="#modifyDetailsModal">Modify Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-8 col-12">
+                <div class="card">
+                    <div class="card-block">
+                        All my posts
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 hidden-md-down">
+                <button class="btn btn-info" type="button" id="followMe">Follow Me</button>
+            </div>
+        </div>
+    </div>
+    <!-- modal - modify user info -->
+    <div class="modal fade" id="modifyDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="name" class="col-2 col-form-label">Name</label>
+                        <input class="form-control col-10" type="text" placeholder="Enter new name" id="name" name="name" value="<%=details.Name%>">
+                    </div>
+                    <div class="form-group row">
+                            <label for="dob" class="col-2 col-form-label">DOB</label>
+                            <input class="form-control col-10" type="text" placeholder="Enter new DOB" id="dob" name="dob" value="<%=details.DOB%>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="updateBtn">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#updateBtn').click(() => {
+            console.log($('#name').val());
+            $.post('/users/update/<%=details._id%>', {
+                    Name: $('#name').val(),
+                    DOB: $('#dob').val()
+                }).done(data => console.log(data))
+                .fail(err => console.log(err));
+            $('#modifyDetailsModal').modal('hide');
+        });
+    </script>
+<% include ./partials-i/footer %>

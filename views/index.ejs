@@ -1,0 +1,107 @@
+<% include ./partials-o/header %>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2 class="display-3">mera naam hai bulla</h2>
+                <p class="lead">mai rakhta hu khulla</p>
+            </div>
+        </div>
+        <hr style="width:30%;">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row">
+                    <h4 class="display-4">A new social network to grow into</h4>
+                </div>
+                <div class="row mt-4">
+                    <img src="http://www.theunrealtimes.com/wp-content/uploads/2016/02/bulla.jpg" class="img-fluid" alt="bulla">
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+                <%if(type!='register'){%>
+                    <form action="/users/login" method="post">
+                        <%if(typeof error_msg != 'undefined' && error_msg!=''){%>
+                            <div class="alert alert-danger" role="alert">
+                                <%=error_msg%>
+                            </div>
+                        <%}%>
+                        <%if(typeof success_msg != 'undefined' && success_msg!=''){%>
+                            <div class="alert alert-success" role="alert">
+                                <%=success_msg%>
+                            </div>
+                        <%}%>
+                        <%if(typeof error != 'undefined' && error!=''){%>
+                            <div class="alert alert-danger" role="alert">
+                                <%=error%>
+                            </div>
+                        <%}%>
+                        <h1 class="mb-3">Login
+                            <hr>
+                        </h1>
+                        <div class="form-group">
+                            <label for="username"><strong>Username</strong></label>
+                            <input type="text" placeholder="..." id="username" name="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><strong>Password</strong></label>
+                            <input type="password" placeholder="..." id="pass" name="pass" class="form-control">
+                        </div>
+                        <button class="btn btn-outline-primary" type="submit">Login</button>
+                        <button class="btn btn-secondary" type="button" id="clear">Clear</button>
+                    </form>
+                <%}%>
+                <%if(type=='register'){%>
+                    <form action="/users/register" method="post">
+                        <%if(typeof errors!='undefined'){%>
+                            <%for(let i=0;i<errors.length;i++){%>
+                                <div class="alert alert-danger">
+                                    <%=errors[i].msg%>
+                                </div>
+                            <%}%>
+                        <%}%>
+                        <h1 class="mb-3">Sign Up
+                            <hr>
+                        </h1> 
+                        <div class="form-group">
+                            <label for="name"><strong>Name</strong></label>
+                            <input type="text" placeholder="..." id="name" name="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="username"><strong>Username</strong></label>
+                            <input type="text" placeholder="..." id="username" name="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><strong>Email</strong></label>
+                            <input type="email" placeholder="..." id="email" name="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="dob"><strong>Date of Birth</strong></label>
+                            <input type="date" placeholder="..." id="dob" name="dob" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><strong>Password</strong></label>
+                            <input type="password" placeholder="..." id="pass" name="pass" class="form-control">
+                        </div>
+                        <div class="form-group">
+                                <label for="cpass"><strong>Confirm Password</strong></label>
+                                <input type="password" placeholder="..." id="cpass" name="cpass" class="form-control">
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+                <%}%>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid mt-5">
+        <hr>
+        <div class="text-center mb-3">
+            @Aakash Rastogi
+        </div>
+    </footer>
+    <script>
+        $('#clear').click(()=>{
+            $('form[action="/users/login"] input')[0].value="";
+            $('form[action="/users/login"] input')[1].value="";
+        })
+    </script>
+<% include ./partials-o/footer %>

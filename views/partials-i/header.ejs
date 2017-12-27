@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #E9EBEE;
+        }
+    </style>
+    <title>Mogambo | Home</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="/feed" class="nav-link">Feed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/users/<%=id%>" class="nav-link">Profile</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Manage
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Option 1</a>
+                            <a class="dropdown-item" href="#">Option 2</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/users/logout">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <a class="navbar-brand mr-auto" href="https://github.com/MeraNaamHaiBulla">mera naam hai bulla</a>
+        </nav>
+    </header>
